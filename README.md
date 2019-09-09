@@ -1,6 +1,6 @@
 # jira-release-notes-generator
 
-Azure Function to extract/generate release notes from Jira for every CI build 
+Azure Function to extract/generate Jira release notes from within Azure Pipelines during CI/CD flow 
 
 Usage:
 1. Open .sln and deploy function to Azure Function app
