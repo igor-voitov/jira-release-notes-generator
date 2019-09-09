@@ -41,7 +41,6 @@ namespace AzureDevOpsReleaseNotes
                 dynamic data = JsonConvert.DeserializeObject(requestBody);
                 string fromBuildNumber = data?.fromBuildNumber;
                 string currentBuildNumber = data?.currentBuildNumber;
-                string buildType = data?.buildType;
                 int toBuildId = 0;
                 int fromBuildId = 0;
 
@@ -161,7 +160,7 @@ namespace AzureDevOpsReleaseNotes
                     }
 
                     string releaseNotesAsString = string.Join(Environment.NewLine, releaseNotes.ToArray());
-                    string releaseNotesFileName = $"{buildType}_{currentBuildNumber}.txt";
+                    string releaseNotesFileName = $"{currentBuildNumber}.txt";
 
                     //Output to blob
                     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("StorageAccountConnectionString"));
@@ -183,7 +182,7 @@ namespace AzureDevOpsReleaseNotes
                     releaseNotes.Add($"No Release Notes for this build\n");
 
                     string releaseNotesAsString = string.Join(Environment.NewLine, releaseNotes.ToArray());
-                    string releaseNotesFileName = $"{buildType}_{currentBuildNumber}.txt";
+                    string releaseNotesFileName = $"{currentBuildNumber}.txt";
 
                     //Output to blob
                     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("StorageAccountConnectionString"));
