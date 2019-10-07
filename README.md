@@ -1,9 +1,12 @@
 # jira-release-notes-generator
 
-Azure Function to extract/generate Jira release notes from within Azure Pipelines during CI/CD flow 
+Azure Function app to extract and generate Jira release notes from within Azure Pipelines during CI/CD flow 
 
 Usage:
 1. Open .sln and deploy function to Azure Function app
-2. Set function app's environments variables in azure portal (also create azure storage account to store release notes)
-3. Invoke function from Azure Pipeline by sending via POST: fromBuildNumber, currentBuildNumber
-4. Release notes will be stored in container, consume/publish .txt file as neccessary 
+2. Create azure intermediate storage account to store release notes
+2. Set app settings as environment variables in azure portar (check function code to get list of settings)
+3. Invoke function from Azure Pipeline by sending via HTTP POST:
+    fromBuildNumber (set to Auto or provide buildNumber as pipeline's vars)
+    currentBuildNumber (send current pipeline's buildNumber var)
+4. Release notes will be stored in container, consume and publish .txt file as neccessary 
